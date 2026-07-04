@@ -1,8 +1,8 @@
 {
-    "name": "@damepi/cosmjs-registry",
+    "name": "@cosmos-registry/wasm-registry",
     "version": "0.1.0",
     "description": "TypeScript client for Cosm Registry CosmWasm contract",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "type": "module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
