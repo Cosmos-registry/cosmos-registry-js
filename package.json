@@ -15,6 +15,14 @@
     "files": [
         "dist"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Cosmos-registry/cosmos-registry-js.git"
+    },
+    "homepage": "https://github.com/Cosmos-registry/cosmos-registry-js",
+    "bugs": {
+        "url": "https://github.com/Cosmos-registry/cosmos-registry-js/issues"
+    },
     "scripts": {
         "sync:schemas": "bash scripts/sync-schemas.sh",
         "build": "tsc -p tsconfig.json",
@@ -23,10 +31,10 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@cosmjs/cosmwasm-stargate": "^0.34.0"
+        "@cosmjs/cosmwasm-stargate": "^0.38.1"
     },
     "devDependencies": {
-        "typescript": "^5.8.0",
-        "vitest": "^2.1.9"
+        "typescript": "^6.0.3",
+        "vitest": "^4.1.9"
     }
 }
