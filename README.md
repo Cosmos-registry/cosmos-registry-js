@@ -1,6 +1,6 @@
 # cosmjs-registry
 
-Client TypeScript pour interroger le contrat Cosm Registry (CosmWasm) via CosmJS.
+A TypeScript client for querying the Cosm Registry (CosmWasm) contract via CosmJS.
 
 ## Installation
 
@@ -14,14 +14,14 @@ npm install
 npm run build
 ```
 
-## Synchroniser les schemas V1
+## Synchronize V1 Schemas
 
 ```bash
 npm run sync:schemas
 ```
 
-Le script copie les schemas JSON depuis le repo contrat vers `schemas/raw/`.
-Vous pouvez surcharger la source avec `CONTRACT_REPO=/chemin/vers/Cosm-registry`.
+The script copies the JSON schemas from the contract repository to `schemas/raw/`.
+You can override the source with `CONTRACT_REPO=/path/to/Cosm-registry`.
 
 ## Tests
 
@@ -38,9 +38,9 @@ npm test
 - `getOwner()`
 - `getParams()`
 
-## API ecriture
+## Write API
 
-Utiliser `SigningCosmRegistryClient` pour les execute messages:
+Use `SigningCosmRegistryClient` to execute the following messages:
 
 - `createChain(chainMeta)`
 - `createEndpoint(chainId, endpointInput)`
@@ -51,4 +51,4 @@ Utiliser `SigningCosmRegistryClient` pour les execute messages:
 - `setParams(params)`
 - `setEndpointFlags(chainId, endpointId, { verified, preferred })`
 
-Toutes les structures de types sont alignées sur les schémas V1 générés dans le repo contrat.
+All type definitions are aligned with the V1 schemas generated in the contract repository.
