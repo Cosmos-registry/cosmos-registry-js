@@ -1,0 +1,32 @@
+{
+    "name": "@damepi/cosmjs-registry",
+    "version": "0.1.0",
+    "description": "TypeScript client for Cosm Registry CosmWasm contract",
+    "license": "Apache-2.0",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "sync:schemas": "bash scripts/sync-schemas.sh",
+        "build": "tsc -p tsconfig.json",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@cosmjs/cosmwasm-stargate": "^0.34.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.8.0",
+        "vitest": "^2.1.9"
+    }
+}
