@@ -1,6 +1,6 @@
 {
     "name": "@cosmos-registry/wasm-registry",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "TypeScript client for Cosm Registry CosmWasm contract",
     "license": "MIT",
     "type": "module",
@@ -28,13 +28,21 @@
         "build": "tsc -p tsconfig.json",
         "test": "vitest run",
         "test:watch": "vitest",
+        "lint": "npx eslint \"src/**/*.ts\"",
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
         "@cosmjs/cosmwasm-stargate": "^0.38.1"
     },
     "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.6.0",
+        "eslint-config-prettier": "^10.1.8",
+        "globals": "^17.7.0",
+        "jiti": "^2.7.0",
+        "prettier": "^3.9.4",
         "typescript": "^6.0.3",
+        "typescript-eslint": "^8.62.1",
         "vitest": "^4.1.9"
     }
 }

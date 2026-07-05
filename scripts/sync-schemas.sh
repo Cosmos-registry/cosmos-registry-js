@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CONTRACT_REPO="${CONTRACT_REPO:-../Cosm-registry}"
+CONTRACT_REPO="${CONTRACT_REPO:-../wasm-registry}"
 SRC="$CONTRACT_REPO/schema/raw"
 DST="schemas/raw"
 
