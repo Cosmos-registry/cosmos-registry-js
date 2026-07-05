@@ -17,7 +17,8 @@ import type {
     OwnerResponse,
     ParamsUpdate,
     QueryMsg,
-    RegistryParamsResponse
+    RegistryParamsResponse,
+    VerificationState
 } from "./types.js";
 
 export class CosmRegistryClient {
@@ -44,14 +45,26 @@ export class CosmRegistryClient {
 
     async getEndpoints(params: {
         chainId: string;
-        kind?: EndpointKind;
         includeInactive?: boolean;
+        kind?: EndpointKind;
+        lastSuccessAfter?: number;
+        lastSuccessBefore?: number;
+        limit?: number;
+        onlyUnverified?: boolean;
+        startAfter?: number;
+        verificationState?: VerificationState;
     }): Promise<EndpointsResponse> {
         return this.query<EndpointsResponse>({
             get_endpoints: {
                 chain_id: params.chainId,
+                include_inactive: params.includeInactive ?? null,
                 kind: params.kind ?? null,
-                include_inactive: params.includeInactive ?? null
+                last_success_after: params.lastSuccessAfter ?? null,
+                last_success_before: params.lastSuccessBefore ?? null,
+                limit: params.limit ?? null,
+                only_unverified: params.onlyUnverified ?? null,
+                start_after: params.startAfter ?? null,
+                verification_state: params.verificationState ?? null
             }
         });
     }

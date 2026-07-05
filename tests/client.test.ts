@@ -40,8 +40,14 @@ describe("CosmRegistryClient", () => {
         expect(queryContractSmart).toHaveBeenCalledWith("cosmos1contract", {
             get_endpoints: {
                 chain_id: "osmosis-1",
+                include_inactive: true,
                 kind: "rpc",
-                include_inactive: true
+                last_success_after: null,
+                last_success_before: null,
+                limit: null,
+                only_unverified: null,
+                start_after: null,
+                verification_state: null
             }
         });
     });

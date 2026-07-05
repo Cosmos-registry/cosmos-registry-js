@@ -2,6 +2,8 @@ export type Uint128 = string;
 
 export type NetworkType = "mainnet" | "testnet" | "devnet";
 export type EndpointKind = "rpc" | "rest" | "grpc" | "wss";
+export type EndpointStatus = "online" | "offline";
+export type VerificationState = "unverified" | "verified_online" | "verified_offline";
 
 export interface Asset {
     denom: string;
@@ -33,11 +35,18 @@ export interface EndpointView {
     kind: EndpointKind;
     url: string;
     normalized_url: string;
-    verified: boolean;
     preferred: boolean;
     active: boolean;
     remaining_deposit: Uint128;
+    consecutive_failures: number;
+    consecutive_successes: number;
     estimated_expiry?: number | null;
+    last_checked_at?: number | null;
+    last_checked_by?: string | null;
+    last_latency_ms?: number | null;
+    last_status?: EndpointStatus | null;
+    last_success_at?: number | null;
+    verification_state: VerificationState;
 }
 
 export interface ChainResponse {
@@ -90,10 +99,14 @@ export interface OwnerResponse {
 }
 
 export interface RegistryParams {
-    min_endpoint_deposit: Uint128;
-    rent_per_epoch: Uint128;
+    auto_unverify_failure_streak: number;
+    auto_unverify_last_success_older_than_secs: number;
     epoch_seconds: number;
     max_endpoints_per_chain: number;
+    min_endpoint_deposit: Uint128;
+    oracle_max_batch_size: number;
+    rent_per_epoch: Uint128;
+    trusted_oracles: string[];
 }
 
 export interface RegistryParamsResponse {
@@ -118,10 +131,14 @@ export interface EndpointInput {
 }
 
 export interface ParamsUpdate {
-    min_endpoint_deposit?: Uint128 | null;
-    rent_per_epoch?: Uint128 | null;
+    auto_unverify_failure_streak?: number | null;
+    auto_unverify_last_success_older_than_secs?: number | null;
     epoch_seconds?: number | null;
     max_endpoints_per_chain?: number | null;
+    min_endpoint_deposit?: Uint128 | null;
+    oracle_max_batch_size?: number | null;
+    rent_per_epoch?: Uint128 | null;
+    trusted_oracles?: string[] | null;
 }
 
 export type ExecuteMsg =
@@ -146,8 +163,14 @@ export type QueryMsg =
     | {
         get_endpoints: {
             chain_id: string;
-            kind?: EndpointKind | null;
             include_inactive?: boolean | null;
+            kind?: EndpointKind | null;
+            last_success_after?: number | null;
+            last_success_before?: number | null;
+            limit?: number | null;
+            only_unverified?: boolean | null;
+            start_after?: number | null;
+            verification_state?: VerificationState | null;
         };
     }
     | { export_chain_json: { chain_id: string } }

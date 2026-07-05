@@ -21,5 +21,6 @@ export type {
     QueryMsg,
     RegistryParams,
     RegistryParamsResponse,
-    Uint128
+    Uint128,
+    VerificationState
 } from "./types.js";
